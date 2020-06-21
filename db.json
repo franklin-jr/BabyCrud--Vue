@@ -1,4 +1,43 @@
 {
-    "users": [
-    ]
+  "users": [
+    {
+      "nome": "Junior",
+      "email": "ju@teste.com",
+      "password": "102030",
+      "endereco": {
+        "cep": "59141-455",
+        "rua": "Rua Aluísio Costa Miranda",
+        "bairro": "Rosa dos Ventos",
+        "cidade": "Parnamirim",
+        "estado": "RN"
+      },
+      "id": 1
+    },
+    {
+      "nome": "théo lima",
+      "email": "the@teste.com",
+      "password": "102030",
+      "endereco": {
+        "cep": "59141-455",
+        "rua": "Rua Aluísio Costa Miranda",
+        "bairro": "Rosa dos Ventos",
+        "cidade": "Parnamirim",
+        "estado": "RN"
+      },
+      "id": 3
+    },
+    {
+      "nome": "maria",
+      "email": "ma@teste.com",
+      "password": "102030",
+      "endereco": {
+        "cep": "59120-040",
+        "rua": "Rua Aluísio Costa Miranda",
+        "bairro": "Rosa dos Ventos",
+        "cidade": "Parnamirim",
+        "estado": "RN"
+      },
+      "id": 4
+    }
+  ]
 }

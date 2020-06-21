@@ -1,8 +1,8 @@
 import settings from '@/settings'
 
 
-let login = (headers, data) => {
-  return fetch(`${settings.excaliburApi}/signin`, {
+let saveUser = (headers, data) => {
+  return fetch(`${settings.urlApi}/users`, {
     method: 'POST',
     mode: 'cors',
     body: JSON.stringify(data),
@@ -14,5 +14,5 @@ let login = (headers, data) => {
 
 
 export default {
-  login
+  saveUser
 }

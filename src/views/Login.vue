@@ -19,11 +19,11 @@
 
                 <v-img
                   :src="require('@/assets/logo_login.png')"
-                  width="250"
+                  width="200"
                   class="mx-auto"
                 ></v-img>
 
-              <v-card-text>
+              <v-card-text class="pa-7">
 
                 <v-form ref="form" v-model="valid" lazy-validation>
                 <v-text-field
@@ -53,7 +53,7 @@
                 <v-btn
                   :disabled="!valid"
                   :loading="loading"
-                  class="mt-4"
+                  class="mt-2"
                   @click="signUser"
                   rounded
                   block
@@ -61,8 +61,16 @@
                 >Entrar</v-btn>
 
 
-
-                Não tem cadastro?
+               <div class="text-center">
+                  <v-btn
+                  @click="dialogCadUser = true"
+                  class="mt-4"
+                  text
+                  small
+                  dark
+                  color="#5388e2"
+                >Registre-se</v-btn>
+               </div>
 
               </v-form>
 
@@ -74,16 +82,31 @@
             </v-card>
           </v-col>
         </v-row>
+
+
+        <v-dialog
+            style="border-radius: 30px;"
+            v-model="dialogCadUser"
+            persistent
+            width="700"
+        >
+            <CadUser @fechar="fecharCadUser()" ></CadUser>
+        </v-dialog>
+
+
+
+
       </v-container>
     </v-content>
   </v-app>
 </template>
 
 <script>
-
+const CadUser = () => import('@/components/CadUser')
 export default {
-  
+  components: {CadUser},
   data: () => ({
+    dialogCadUser: false,
     show1: false,
     valid: true,
     password: '',
@@ -103,6 +126,9 @@ export default {
     }
   },
   methods: {
+    fecharCadUser() {
+        this.dialogCadUser = false
+    },
     signUser () {
       //this.$router.push('/home')
        if (this.$refs.form.validate()) {

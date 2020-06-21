@@ -1,24 +1,11 @@
-# baby_crud_vue
+# BabyCrud - Vue
 
-## Project setup
-```
-npm install
-```
+![Login](./src/assets/logo_login.png)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Resumo
+Primeiramente gostaria da sua apinião e sugestão sobre o código e estrutura, ficaria muito grato por compartilhar de seu conhecimento.  
+Como o intuito é enfatisar o FRONT-END, a aplicação roda com o [json-server](https://github.com/typicode/json-server).
 
-### Compiles and minifies for production
-```
-npm run build
-```
+A aplicação foi desenvolvida com o [Vuetify](https://vuetifyjs.com/en/) que é um framework responsivo em Vue, baseado no Material Design.
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

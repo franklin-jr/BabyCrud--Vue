@@ -15,7 +15,6 @@ export default {
 	
 		signOut ({ commit }) {
 			commit('setUser', null)
-			commit('setAuthHeader', null )
 		},
 
 		//Metodo de login===========================
@@ -34,6 +33,20 @@ export default {
 				commit('setErrorMessage', error)
 			})
 		},
+		saveUser ({ commit }, payload) {
+            return new Promise((resolve, reject) => {
+				userDao.saveUser(shared.state.headers, payload).then((response) => {
+                if (response.ok) {
+					commit('setSuccessMessage', {ativo: true, message: 'Baby salvo com sucesso!'})
+					resolve(response.json())
+                }
+              }).catch(error => {
+				commit('setErrorMessage', {ativo: true, message: `Não foi possível salvar Baby ! (${error.message})`})
+                reject(error)
+                
+              })
+            })
+        }, 
 	},
     
 	getters: {

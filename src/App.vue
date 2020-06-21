@@ -3,12 +3,12 @@
     <v-fade-transition>
       <router-view></router-view>
     </v-fade-transition>
-        <v-snackbar :timeout="4000" :vertical="true"  v-model="snackbar.active">
-         <span class="white--text"> {{errorMessage}} </span>
-          <v-spacer></v-spacer>
-          <v-btn icon small @click="snackbar.active = false">
-            <v-icon color="white">close</v-icon>
-          </v-btn>
+        <v-snackbar color="red" :timeout="4000" :vertical="true"  v-model="snackbarErro.active">
+         <span class="white--text"> {{errorMessage.message}} </span>
+        </v-snackbar>
+
+        <v-snackbar top color="green" :timeout="4000" :vertical="true"  v-model="snackbarSuccess.active">
+            <span class="white--text"> {{successMessage.message}} </span>
         </v-snackbar>
   </v-app>
 </template>
@@ -19,15 +19,35 @@
 export default {
   name: 'App',
   data: () => ({
-     snackbar: {
+    snackbarErro: {
         active: false
-      }
+    },
+    snackbarSuccess: {
+        active: false
+    }
     
   }),
+  mounted () {
+      if (this.authenticated === false && this.$route.path !== '/') {
+        this.$router.push('/')
+      }
+
+  },
    watch: {
     errorMessage (val) {
-      if (val) {
-        this.snackbar.active = true
+      if (val.ativo) {
+        this.snackbarErro.active = true
+        setTimeout(() => {
+          this.$store.commit('setErrorMessage', {ativo: false, message: null})
+        }, 4000);
+      }
+    },
+    successMessage (val) {
+      if (val.ativo) {
+        this.snackbarSuccess.active = true
+        setTimeout(() => {
+          this.$store.commit('setSuccessMessage', {ativo: false, message: null})
+        }, 4000);
       }
     },
     user (val) {
@@ -44,7 +64,13 @@ export default {
     },
     errorMessage () {
       return this.$store.getters.errorMessage
-    }
+    },
+    successMessage () {
+      return this.$store.getters.successMessage
+    },
+    authenticated () {
+      return !!this.user
+    },
   }
 };
 </script>
